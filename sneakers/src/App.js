@@ -22,7 +22,13 @@ function App() {
         </ul>
       </header>
       <div className="content" >
-        <h1 style={{marginBottom: '40px'}} >Все кроссовки</h1>
+        <div className='search' >
+          <h1>Все Кроссовки</h1>
+          <div className='search-block' >
+            <input placeholder='Поиск...' />
+          </div>
+        </div>
+        
         
         <div className='card' >
           <img width={133} header={112} src='./images/1.jpg'  alt='sneakers' />
