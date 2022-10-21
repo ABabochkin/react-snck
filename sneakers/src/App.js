@@ -14,6 +14,25 @@ function App() {
 
   return (
     <div className="wrapper">
+
+      <div className='overlay'>
+        <div className='drawer' >
+          <h2>Корзина</h2>
+          <div className='cardItem'>
+            <img style={{marginRight: '20px'}} width={70} height={70} src='./images/2.jpg' alt='snk'/>
+            <div style={{marginRight: '20px'}} >
+              <p>Мужские Кроссовки Nike Air Max 270</p>
+              <b>12 999 руб.</b>
+            </div>
+            <button className='removeBtn' >
+              <img width={11} height={11} src='./images/remove.png'  alt='removeBtn' />
+            </button>
+          
+          </div>
+        </div>
+      </div>
+
+
       <header>
         <div className="header-left">
           <img width={40} height={40} src="./images/logo.png" alt="logo"/>
