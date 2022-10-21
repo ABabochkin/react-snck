@@ -172,6 +172,37 @@ header {
   padding: 30px;
 
 
+
+
+
+  .cartClose {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .btnClose {
+      background: #ffffffad;
+      border: 1px solid #DCDCDC;
+      border-radius: 8px;
+      box-sizing: border-box;
+      height: 35px;
+      width: 35px;
+      cursor: pointer;
+
+      margin-bottom: 20px;
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+      &:active {
+        background: red;
+      }
+
+    }
+
+  }
+
   h2 {
     margin: 0;
     margin-bottom: 20px;
@@ -255,13 +286,20 @@ header {
   line-height: 19px;
   text-align: center;
   cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 
   &:hover {
     opacity: 0.5;
+    transform: translateY(-5px)
   }
 
   &:active {
     opacity: 0.3;
   }
 
+}
+
+.items {
+  height: 50%;
+  overflow: auto;
 }

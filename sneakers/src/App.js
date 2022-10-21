@@ -17,10 +17,11 @@ function App() {
 
       <div className='overlay'>
         <div className='drawer' >
-
-        <div>
+          <div className='cartClose'>
             <h2>Корзина</h2>
-            <div className='items' >
+            <button className='btnClose' > <img src='./images/remove.png' alt='close' /> </button>
+          </div>
+            <div className='items'>
               <div className='cardItem'>
                 <img style={{marginRight: '20px'}} width={70} height={70} src='./images/2.jpg' alt='snk'/>
                 <div style={{marginRight: '20px'}} >
@@ -31,7 +32,6 @@ function App() {
                   <img width={11} height={11} src='./images/remove.png'  alt='removeBtn' />
                 </button>
               </div>
-
               <div className='cardItem'>
                 <img style={{marginRight: '20px'}} width={70} height={70} src='./images/2.jpg' alt='snk'/>
                 <div style={{marginRight: '20px'}} >
@@ -42,9 +42,7 @@ function App() {
                   <img width={11} height={11} src='./images/remove.png'  alt='removeBtn' />
                 </button>
               </div>
-            </div>  
         </div>
-
         <div className='cardTotalBlock'>
           <ul>
               <li>
