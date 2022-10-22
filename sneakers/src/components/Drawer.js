@@ -1,39 +1,30 @@
 import React from 'react'
 
-export default function Drawer(props) {
+export default function Drawer({onClose, items = [], title, price, Image,}) {
 return (
-
     <div className='overlay'>
     <div className='drawer' >
         <div className='cartClose'>
             <h2>Корзина</h2>
-            <button className='btnClose' onClick={props.onClick} >
+            <button className='btnClose' onClick={onClose} >
                 <img src='./images/remove.png' alt='close' />
             </button>
         </div>
         <div className='items'>
 
+            {items.map((item) => (
             <div className='cardItem'>
-                <img style={{marginRight: '20px'}} width={70} height={70} src='./images/2.jpg' alt='snk'/>
+                <img style={{marginRight: '20px'}} width={70} height={70} src={item.Image} alt='snk'/>
                 <div style={{marginRight: '20px'}} >
-                    <p>Мужские Кроссовки Nike Air Max 270</p>
-                    <b>12 999 руб.</b>
+                    <p>{item.title}</p>
+                    <b>{item.price}</b>
                 </div>
                 <button className='removeBtn' >
                     <img width={11} height={11} src='./images/remove.png'  alt='removeBtn' />
                     </button>
             </div>
-
-            <div className='cardItem'>
-                <img style={{marginRight: '20px'}} width={70} height={70} src='./images/2.jpg' alt='snk'/>
-                <div style={{marginRight: '20px'}} >
-                    <p>Мужские Кроссовки Nike Air Max 270</p>
-                    <b>12 999 руб.</b>
-                </div>
-                <button className='removeBtn' >
-                    <img width={11} height={11} src='./images/remove.png'  alt='removeBtn' />
-                </button>
-            </div>
+            ))}
+        
 
         </div>
 

@@ -2,7 +2,7 @@
 import Header from './components/Header'
 import Card from './components/Card'
 import Drawer from './components/Drawer'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function App() {
 
@@ -19,19 +19,27 @@ function App() {
 
 
   const [items, setItems] = useState([])
+  const [cartItems, setCartItems] = useState([])
   const [cartOpened, setCartOpened] = useState(false)
 
-  fetch('https://63544c7ae64783fa8282d85a.mockapi.io/items')
-    .then(res => {
-      return res.json()
-    })
-    .then((json) => {
-      setItems(json)
-    } )
+  useEffect(() => {
+    fetch('https://63544c7ae64783fa8282d85a.mockapi.io/items')
+      .then((res) => {
+        return res.json();
+      })
+      .then((json)=> {
+        setItems(json)
+      })
+  }, []);
+
+  const addToCard = (obj) => {
+    console.log(obj)
+    setCartItems([...cartItems, obj])
+  }
 
   return (
     <div className="wrapper" >
-      { cartOpened ? <Drawer onClick = {() => setCartOpened(false) } /> : null }
+      { cartOpened ? <Drawer items={cartItems} onClose = {() => setCartOpened(false) } /> : null }
       <Header onClick = {() => setCartOpened(true)} />
       <div className="content" >
         <div className='search' >
@@ -42,11 +50,12 @@ function App() {
           </div>
         </div>
         <div style={{display: 'flex', flexWrap: 'wrap', marginLeft: '30px'}}>
-          {items.map((obj) => (
+          {items.map((item) => (
             <Card
-              title = {obj.name}
-              price = {obj.price}
-              Image = {obj.Image}
+              title = {item.name}
+              price = {item.price}
+              Image = {item.Image}
+              onPlus = {(obj) => addToCard(obj)}
             />
           ) )}  
         </div>

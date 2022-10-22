@@ -1,22 +1,23 @@
 import React, { useState } from 'react'
 
-export default function Card(props) {
+export default function Card({title, price, Image, onPlus}) {
 
     const [isAdded, setIsAdded] = useState(false)
 
     const onClickPlus = () => {
+        onPlus({title, price, Image})
         setIsAdded(!isAdded)
     }
 
 
     return (
     <div className='card' >
-        <img width={133} header={112} src={props.Image}  alt='sneakers' />
-        <h5> {props.title} </h5>
+        <img width={133} header={112} src={Image}  alt='sneakers' />
+        <h5> {title} </h5>
         <div className='card-bottom'>
             <div className='card-info'>
                 <span>ЦЕНА:</span>
-                <b> {props.price} </b>
+                <b> {price} </b>
             </div>
         
             <img
