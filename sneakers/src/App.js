@@ -41,7 +41,7 @@ function App() {
             <input placeholder='Поиск...' />
           </div>
         </div>
-        <div style={{display: 'flex', flexWrap: 'wrap'}}>
+        <div style={{display: 'flex', flexWrap: 'wrap', marginLeft: '30px'}}>
           {items.map((obj) => (
             <Card
               title = {obj.name}
