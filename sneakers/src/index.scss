@@ -28,13 +28,19 @@ header {
   border-bottom: 1px solid #eaeaea;
   font-family: 'Inter';
 
+  span {
+    font-family: 'Inter';
+  }
+
   img {
     margin-right: 15px;
+    cursor: pointer;
   }
 
   ul {
     margin: 0;
     padding: 0;
+    display: flex;
   }
 
   li {
@@ -43,7 +49,6 @@ header {
 
   .header-left {
     display: flex;
-    align-items: center;
 
     h3,
     p {
@@ -300,6 +305,6 @@ header {
 }
 
 .items {
-  height: 50%;
+  height: 100%;
   overflow: auto;
 }

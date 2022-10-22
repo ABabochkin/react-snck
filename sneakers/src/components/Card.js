@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Card(props) {
+
+    const [isAdded, setIsAdded] = useState(false)
+
+    const onClickPlus = () => {
+        setIsAdded(!isAdded)
+    }
+
+
     return (
     <div className='card' >
         <img width={133} header={112} src={props.Image}  alt='sneakers' />
@@ -10,9 +18,14 @@ export default function Card(props) {
                 <span>ЦЕНА:</span>
                 <b> {props.price} </b>
             </div>
-        <button className='button' >
-        <img width={11} height={11} src='./images/plus.svg' alt='plus' />
-        </button>
+        
+            <img
+                width={32} height={32}
+                src={isAdded ? './images/btn-checked.svg' : './images/plus.png' }
+                alt='plus'
+                style={{cursor: 'pointer'}}
+                onClick={onClickPlus}
+            />
         </div>
     </div>
     )
