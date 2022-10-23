@@ -18,9 +18,10 @@ function App() {
 ] */
 
 
-  const [items, setItems] = useState([])
-  const [cartItems, setCartItems] = useState([])
-  const [cartOpened, setCartOpened] = useState(false)
+  const [items, setItems] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
+  const [cartOpened, setCartOpened] = useState(false);
 
   useEffect(() => {
     fetch('https://63544c7ae64783fa8282d85a.mockapi.io/items')
@@ -33,30 +34,48 @@ function App() {
   }, []);
 
   const addToCard = (obj) => {
-    console.log(obj)
-    setCartItems([...cartItems, obj])
+      setCartItems( (prev) =>  [...prev, obj])
+  }
+
+  const onChangeSearchValue = (e) => {
+    setSearchValue(e.target.value)
   }
 
   return (
-    <div className="wrapper" >
+    <div className="wrapper">
       { cartOpened ? <Drawer items={cartItems} onClose = {() => setCartOpened(false) } /> : null }
       <Header onClick = {() => setCartOpened(true)} />
       <div className="content" >
         <div className='search' >
-          <h1>Все Кроссовки</h1>
-          <div className='search-block' >
+          <h1>{ searchValue ? `Поиск по запросу: "${searchValue}"` : 'Все Кроссовки'}</h1>
+          <div className='search-block'>
             <img src='./images/search.svg' alt='search' />
-            <input placeholder='Поиск...' />
+            <input onChange={onChangeSearchValue} value={searchValue} placeholder='Поиск...' />
+
+            { searchValue ?
+              <img
+                className='removeInput' 
+                width={15} height={15} 
+                src='./images/remove.png' 
+                alt='removeBtn' 
+                onClick={() => setSearchValue('') } 
+              />
+                : null  }
+
           </div>
         </div>
         <div style={{display: 'flex', flexWrap: 'wrap', marginLeft: '30px'}}>
-          {items.map((item) => (
-            <Card
-              title = {item.name}
-              price = {item.price}
-              Image = {item.Image}
-              onPlus = {(obj) => addToCard(obj)}
-            />
+              
+          {items
+            .filter((item) => item.name.toLowerCase().includes(searchValue))
+            .map((item, index) => (
+              <Card
+                key={index}
+                title = {item.name}
+                price = {item.price}
+                Image = {item.Image}
+                onPlus = {(obj) => addToCard(obj)}
+              />
           ) )}  
         </div>
       </div>

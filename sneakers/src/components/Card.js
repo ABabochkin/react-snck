@@ -11,7 +11,7 @@ export default function Card({title, price, Image, onPlus}) {
 
 
     return (
-    <div className='card' >
+    <div className='card'  >
         <img width={133} header={112} src={Image}  alt='sneakers' />
         <h5> {title} </h5>
         <div className='card-bottom'>

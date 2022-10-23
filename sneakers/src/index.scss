@@ -81,7 +81,10 @@ header {
         border: 0;
         padding: 10px;
         font-size: 16px;
+        outline: none;
+        box-shadow: none;
       }
+
     }
 
   }
@@ -309,4 +312,15 @@ header {
 .items {
   height: 100%;
   overflow: auto;
+}
+
+.removeInput {
+  width: 11px;
+  height: 11px;
+  border: 1px solid #F2F2F2;
+  border-radius: 2px;
+  box-sizing: border-box;
+  margin-top: 13px;
+  margin-left: 10px;
+  cursor: pointer;
 }

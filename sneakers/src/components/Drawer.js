@@ -21,7 +21,7 @@ return (
                 </div>
                 <button className='removeBtn' >
                     <img width={11} height={11} src='./images/remove.png'  alt='removeBtn' />
-                    </button>
+                </button>
             </div>
             ))}
         
