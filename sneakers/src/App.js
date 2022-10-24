@@ -5,7 +5,7 @@ import Card from './components/Card'
 import Drawer from './components/Drawer'
 import { useEffect, useState } from 'react'
 
-function App() {
+function App( ) {
 
   /* const arr = [
     {name: 'Мужские Кроссовки Nike Blazer Mid Suede', price: '12 999 руб.', Image: './images/1.jpg'},
