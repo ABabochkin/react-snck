@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Card({title, price, Image, onPlus, index}) {
+export default function Card({title, price, Image, onPlus, onPlusFavorite}) {
 
     const [isAdded, setIsAdded] = useState(false);
     const [isFavorite, setIsFavorite] = useState(false);
@@ -11,7 +11,9 @@ export default function Card({title, price, Image, onPlus, index}) {
     }
 
     const onClickFavorite = () => {
+        onPlusFavorite({title,price,Image})
         setIsFavorite(!isFavorite)
+
     }
 
 

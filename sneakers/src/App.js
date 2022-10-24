@@ -21,35 +21,44 @@ function App() {
 
   const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [favoriteItems, setFavoriteItems] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [cartOpened, setCartOpened] = useState(false);
 
   useEffect(() => {
-      axios.get('https://63544c7ae64783fa8282d85a.mockapi.io/items')
-        .then((res) => {
-          setItems(res.data)
-        });
+        axios.get('https://63544c7ae64783fa8282d85a.mockapi.io/items')
+          .then((res) => {
+            setItems(res.data)
+          });
 
-          axios.get('https://63544c7ae64783fa8282d85a.mockapi.io/cart')
-        .then((res) => {
-          setCartItems(res.data)
-        });  
+        axios.get('https://63544c7ae64783fa8282d85a.mockapi.io/cart')
+          .then((res) => {
+            setCartItems(res.data)
+          });  
+
+        axios.get('https://63544c7ae64783fa8282d85a.mockapi.io/favorites')
+          .then((res) => {
+            setCartItems(res.data)
+          });  
   }, []);
 
   const addToCard = (obj) => {
     axios.post('https://63544c7ae64783fa8282d85a.mockapi.io/cart', obj)
     setCartItems( (prev) =>  [...prev, obj])
-    console.log(obj)
+  }
+
+  const addToFavorite = (obj) => {
+    axios.post('https://63544c7ae64783fa8282d85a.mockapi.io/favorites', obj)
+    setFavoriteItems((prev) => [...prev, obj])
+  }
+
+  const onRemoveItem = (id) => {
+    axios.delete(`https://63544c7ae64783fa8282d85a.mockapi.io/cart/${id}`)
+    setCartItems((prev) => prev.filter((item) => item.id !== id))
   }
 
   const onChangeSearchValue = (e) => {
     setSearchValue(e.target.value)
-  }
-
-  const onRemoveItem = (id) => {
-    console.log(id)
-    axios.delete(`https://63544c7ae64783fa8282d85a.mockapi.io/cart/${id}`)
-    setCartItems((prev) => prev.filter((item) => item.id !== id))
   }
 
 
@@ -88,6 +97,7 @@ function App() {
                 price = {item.price}
                 Image = {item.Image}
                 onPlus = {(obj) => addToCard(obj)}
+                onPlusFavorite = {(obj) => addToFavorite(obj)}
               />
           ) )}  
         </div>
