@@ -43,12 +43,12 @@ return (
                         <li>
                             <span>Итого:</span>
                             <div></div>
-                            <b>{totalPrice + totalTax }</b>
+                            <b>{totalPrice + totalTax } руб. </b>
                         </li>
                         <li>
                             <span>Налог 5%:</span>
                             <div></div>
-                            <b>{totalTax}</b>
+                            <b>{totalTax} руб. </b>
                         </li>
                         <button className='buttonCheck'>Оформить заказ</button>
                         <img src='./images/btn.png'  alt='btn'/>

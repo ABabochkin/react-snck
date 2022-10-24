@@ -45,7 +45,19 @@ header {
 
   li {
     list-style-type: none;
+
+    img {
+      transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+      }
+
+    }
+
   }
+
 
   .header-left {
     display: flex;

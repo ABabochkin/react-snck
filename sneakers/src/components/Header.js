@@ -13,7 +13,7 @@ export default function Header(props ) {
         </div>
         <ul>
             <li style={{marginRight: '30px'}}>
-                <img
+                <img 
                     width={18} 
                     height={18} 
                     src="./images/cart1.svg" 
@@ -26,7 +26,7 @@ export default function Header(props ) {
                 <img width={18} height={18} src="./images/like.png" alt="like"/>
             </li>
             <li>
-                <img width={18} height={18} src="./images/man.svg" alt="like"/>
+                <img width={18} height={18} src="./images/man.svg" alt="profile"/>
             </li>
         </ul>
     </header>
