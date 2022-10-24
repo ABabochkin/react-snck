@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Drawer({onClose, items = [], onRemove, title, price, Image, }) {
+export default function Drawer({onClose, items = [], onRemove}) {
 return (
     <div className='overlay'>
     <div className='drawer' >
@@ -12,22 +12,19 @@ return (
         </div>
         <div className='items'>
 
-            {items.map((obj) => (
-            <div className='cardItem'>
+            {items.map((obj, id) => (
+            <div className='cardItem' key={id} >
                 <img style={{marginRight: '20px'}} width={70} height={70} src={obj.Image} alt='snk'/>
                 <div style={{marginRight: '20px'}} >
                     <p>{obj.title}</p>
                     <b>{obj.price}</b>
                 </div>
-                <button className='removeBtn'  onClick={() => onRemove(obj.id) }  >
+                <button className='removeBtn' onClick={() => {onRemove(obj.id)} } > 
                     <img width={11} height={11} src='./images/remove.png'  alt='removeBtn' />
                 </button>
             </div>
             ))}
-        
-
         </div>
-
     <div className='cardTotalBlock'>
         <ul>
             <li>
