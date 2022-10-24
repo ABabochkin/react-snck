@@ -2,16 +2,27 @@ import React, { useState } from 'react'
 
 export default function Card({title, price, Image, onPlus, index}) {
 
-    const [isAdded, setIsAdded] = useState(false)
+    const [isAdded, setIsAdded] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
 
     const onClickPlus = () => {
         onPlus({title, price, Image})
         setIsAdded(!isAdded)
     }
 
+    const onClickFavorite = () => {
+        setIsFavorite(!isFavorite)
+    }
+
 
     return (
     <div className='card'>
+        <img
+            className='favorite' 
+            src={isFavorite ? './images/favorite.png' : './images/noFavorite.png'} 
+            alt='like' 
+            onClick={onClickFavorite} />
+            
         <img width={133} header={112} src={Image}  alt='sneakers' />
         <h5> {title} </h5>
         <div className='card-bottom'>

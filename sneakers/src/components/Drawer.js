@@ -36,7 +36,7 @@ return (
                             <b>21 498 руб. </b>
                         </li>
                         <li>
-                            <span>Налог 5%: </span>
+                            <span>Налог 5%:</span>
                             <div></div>
                             <b>1074 руб. </b>
                         </li>
