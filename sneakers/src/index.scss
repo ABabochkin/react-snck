@@ -186,7 +186,12 @@ header {
   padding: 30px;
 
 
-
+  .scrollItemsBlock {
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    overflow: auto;
+  }
 
 
   .cartClose {

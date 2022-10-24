@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function Header(props) {
+export default function Header(props ) {
+
     return (
     <header>
         <div className="header-left">
@@ -19,7 +20,7 @@ export default function Header(props) {
                     alt="cart"
                     onClick={props.onClick}
                 />
-                <span>1205 руб.</span>
+                <span> 1250 руб. </span>
             </li>
             <li style={{marginRight: '20px'}} >
                 <img width={18} height={18} src="./images/like.png" alt="like"/>

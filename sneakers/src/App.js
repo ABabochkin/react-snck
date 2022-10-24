@@ -38,6 +38,8 @@ function App() {
 
   }, []);
 
+  
+
   const addToCard = (obj) => {
     axios.post('https://63544c7ae64783fa8282d85a.mockapi.io/cart', obj)
     .then(res => setCartItems(prev => [...prev, res.data]))  
@@ -61,7 +63,7 @@ function App() {
   
   return (
     <div className="wrapper">
-      { cartOpened ? <Drawer items={cartItems} onClose = {() => setCartOpened(false) } onRemove = {onRemoveItem}  /> : null }
+      { cartOpened ? <Drawer items={cartItems} onClose = {() => setCartOpened(false) } onRemove = {onRemoveItem}   /> : null }
       <Header onClick = {() => setCartOpened(true)} />
       <div className="content" >
         <div className='search' >

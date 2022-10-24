@@ -1,6 +1,16 @@
 import React from 'react'
 
-export default function Drawer({onClose, items = [], onRemove}) {
+
+export default function Drawer({onClose, items = [], onRemove }) {
+
+
+    const totalPrice = items.reduce((sum, el) => {
+        return sum + el.price;
+    },0 )
+
+    const totalTax = (totalPrice * 5) / 100;
+
+
 return (
 <div className='overlay'>
     <div className='drawer'>
@@ -12,7 +22,7 @@ return (
         </div>
 
         {items.length ? (
-            <div>
+            <div className='scrollItemsBlock' >
                 <div className='items'>
                     {items.map((obj, id) => (
                         <div className='cardItem' key={id} >
@@ -33,12 +43,12 @@ return (
                         <li>
                             <span>Итого:</span>
                             <div></div>
-                            <b>21 498 руб. </b>
+                            <b>{totalPrice + totalTax }</b>
                         </li>
                         <li>
                             <span>Налог 5%:</span>
                             <div></div>
-                            <b>1074 руб. </b>
+                            <b>{totalTax}</b>
                         </li>
                         <button className='buttonCheck'>Оформить заказ</button>
                         <img src='./images/btn.png'  alt='btn'/>
