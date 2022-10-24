@@ -324,3 +324,59 @@ header {
   margin-left: 10px;
   cursor: pointer;
 }
+
+.cartEmpty {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
+
+  img {
+    margin-bottom: 20px;
+  }
+
+  p {
+    width: 280px;
+    line-height: 20px;
+    opacity: 0.3;
+  }
+
+  .greenButton {
+    width: 245px;
+    height: 55px;
+    background: #9DD558;
+    border-radius: 18px;
+    border: none;
+    color: white;
+    font-family: 'Inter';
+    font-weight: 600;
+    font-style: normal;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 19px;
+    padding-bottom: 20px;
+
+    &:hover {
+      img {
+        transform: translateX(-5px);
+      }
+    }
+
+    img {
+      position: relative;
+      top: 20px;
+      right: 20px;
+      transition: transform 0.15s ease-in-out;
+    }
+
+  }
+
+
+
+}
