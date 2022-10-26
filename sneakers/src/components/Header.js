@@ -28,7 +28,7 @@ export default function Header(props ) {
                 <span> 1250 руб. </span>
             </li>
             <li style={{marginRight: '20px'}} >
-                <Link to = '/test' >
+                <Link to = '/favorites' >
                     <img width={18} height={18} src="./images/like.png" alt="like"/>
                 </Link>
             </li>

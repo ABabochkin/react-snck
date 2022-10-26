@@ -5,10 +5,10 @@ import axios from 'axios'
 import Header from './components/Header'
 //import Card from './components/Card'
 import Drawer from './components/Drawer'
-import Favorites from './components/Favorites';
 import { useEffect, useState } from 'react';
 
 import Home from './pages/Home';
+import Favorites from './pages/Favorites';
 
 function App( ) {
 
@@ -41,6 +41,11 @@ function App( ) {
             setCartItems(res.data)
           });  
 
+          axios.get('https://63544c7ae64783fa8282d85a.mockapi.io/favorites')
+          .then((res) => {
+            setFavoriteItems(res.data)
+          });  
+
   }, []);
 
   
@@ -54,6 +59,8 @@ function App( ) {
     axios.post('https://63544c7ae64783fa8282d85a.mockapi.io/favorites', obj)
     setFavoriteItems((prev) => [...prev, obj])
   }
+
+  
 
   const onRemoveItem = (id) => {
     axios.delete(`https://63544c7ae64783fa8282d85a.mockapi.io/cart/${id}`)
@@ -71,8 +78,9 @@ function App( ) {
       { cartOpened ? <Drawer items={cartItems} onClose = {() => setCartOpened(false) } onRemove = {onRemoveItem}   /> : null }
       <Header onClick = {() => setCartOpened(true)} /> 
       
+
       <Routes>
-        <Route path='/' element = { 
+        <Route exact path='/' element = { 
           <Home 
             items = {items} 
             searchValue={searchValue} 
@@ -80,8 +88,16 @@ function App( ) {
             setSearchValue={setSearchValue} 
             addToFavorite={addToFavorite}
             addToCard={addToCard}
+          />}
+        />
+        <Route path='/favorites' element = { 
+          <Favorites
+            items = {favoriteItems}
+            addToFavorite={addToFavorite}
           /> 
-          } />
+          }  
+
+        />
       </Routes>
 
     </div>
