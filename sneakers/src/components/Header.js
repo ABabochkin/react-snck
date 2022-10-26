@@ -1,16 +1,21 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default function Header(props ) {
 
     return (
     <header>
-        <div className="header-left">
-            <img width={40} height={40} src="./images/logo.png" alt="logo"/>
-            <div>
-                <h3>REACT SNEAKERS</h3>
-                <p>Магазин лучших кроссовок</p>
+            <div className="header-left">
+                <Link to = '/' >
+                    <img width={40} height={40} src="./images/logo.png" alt="logo"/>
+                </Link>
+                
+                <div>
+                    <h3>REACT SNEAKERS</h3>
+                    <p>Магазин лучших кроссовок</p>
+                </div>
             </div>
-        </div>
+        
         <ul>
             <li style={{marginRight: '30px'}}>
                 <img 
@@ -23,7 +28,9 @@ export default function Header(props ) {
                 <span> 1250 руб. </span>
             </li>
             <li style={{marginRight: '20px'}} >
-                <img width={18} height={18} src="./images/like.png" alt="like"/>
+                <Link to = '/test' >
+                    <img width={18} height={18} src="./images/like.png" alt="like"/>
+                </Link>
             </li>
             <li>
                 <img width={18} height={18} src="./images/man.svg" alt="profile"/>

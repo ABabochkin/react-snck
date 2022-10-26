@@ -1,9 +1,14 @@
 
+import {Routes, Route} from 'react-router-dom';
+
 import axios from 'axios'
 import Header from './components/Header'
-import Card from './components/Card'
+//import Card from './components/Card'
 import Drawer from './components/Drawer'
-import { useEffect, useState } from 'react'
+import Favorites from './components/Favorites';
+import { useEffect, useState } from 'react';
+
+import Home from './pages/Home';
 
 function App( ) {
 
@@ -64,42 +69,21 @@ function App( ) {
   return (
     <div className="wrapper">
       { cartOpened ? <Drawer items={cartItems} onClose = {() => setCartOpened(false) } onRemove = {onRemoveItem}   /> : null }
-      <Header onClick = {() => setCartOpened(true)} />
-      <div className="content" >
-        <div className='search' >
-          <h1>{ searchValue ? `Поиск по запросу: "${searchValue}"` : 'Все Кроссовки'}</h1>
-          <div className='search-block'>
-            <img src='./images/search.svg' alt='search' />
-            <input onChange={onChangeSearchValue} value={searchValue} placeholder='Поиск...' />
+      <Header onClick = {() => setCartOpened(true)} /> 
+      
+      <Routes>
+        <Route path='/' element = { 
+          <Home 
+            items = {items} 
+            searchValue={searchValue} 
+            onChangeSearchValue={onChangeSearchValue}
+            setSearchValue={setSearchValue} 
+            addToFavorite={addToFavorite}
+            addToCard={addToCard}
+          /> 
+          } />
+      </Routes>
 
-            { searchValue ?
-              <img
-                className='removeInput' 
-                width={15} height={15} 
-                src='./images/remove.png' 
-                alt='removeBtn' 
-                onClick={() => setSearchValue('') } 
-              />
-                : null  }
-
-          </div>
-        </div>
-        <div style={{display: 'flex', flexWrap: 'wrap', marginLeft: '30px'}}>
-              
-          {items
-            .filter((item) => item.name.toLowerCase().includes(searchValue))
-            .map((item) => (
-              <Card
-                key={item.Image}
-                title = {item.name}
-                price = {item.price}
-                Image = {item.Image}
-                onPlus = {(obj) => addToCard(obj)}
-                onPlusFavorite = {(obj) => addToFavorite(obj)}
-              />
-          ) )}  
-        </div>
-      </div>
     </div>
   );
 }
