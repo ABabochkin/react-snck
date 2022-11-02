@@ -11,7 +11,7 @@ export default function Header(props ) {
                 </Link>
                 
                 <div>
-                    <h3>REACT SNEAKERS</h3>
+                    <h3>SNEAKERS</h3>
                     <p>Магазин лучших кроссовок</p>
                 </div>
             </div>

@@ -8,7 +8,10 @@ function Home ({
     setSearchValue,
     onChangeSearchValue,
     addToFavorite,
-    addToCard
+    addFavorites,
+    addToCard,
+    removeFavorites,
+    cartItems
 }) {
     return (
         <div className="content" >
@@ -41,8 +44,9 @@ function Home ({
                         price = {item.price}
                         Image = {item.Image}
                         onPlus = {(obj) => addToCard(obj)}
-                        onPlusFavorite = {(obj) => addToFavorite(obj)}
-                        // added = {cartItems.some((obj) => Number(obj.id) === Number(item.id))}
+                        onPlusFavorite = {(obj) => addFavorites(obj)}
+                        removeFavorites={removeFavorites}
+                        //added = {cartItems.find((obj) => (obj.Image) === (item.Image))}
                     />
                 ) )}  
             </div>

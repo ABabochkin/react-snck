@@ -1,14 +1,7 @@
 import React from 'react'
 
 
-export default function Drawer({onClose, items = [], onRemove }) {
-
-
-    const totalPrice = items.reduce((sum, el) => {
-        return sum + el.price;
-    },0 )
-
-    const totalTax = (totalPrice * 5) / 100;
+export default function Drawer({onClose, items= [], onRemoveItem }) {
 
 
 return (
@@ -23,15 +16,15 @@ return (
 
         {items.length ? (
             <div className='scrollItemsBlock' >
-                <div className='items'>
-                    {items.map((obj, id) => (
-                        <div className='cardItem'  >
+                <div className='items' >
+                    {items.map((obj) => (
+                        <div className='cardItem'>
                             <img style={{marginRight: '20px'}} width={70} height={70} src={obj.Image} alt='snk'/>
                             <div style={{marginRight: '20px'}} >
                                 <p>{obj.title}</p>
                                 <b>{obj.price}</b>
                             </div>
-                            <button className='removeBtn' onClick={() => {onRemove(obj.id)} } > 
+                            <button className='removeBtn' onClick={() => {onRemoveItem(obj.Image)} } > 
                                 <img width={11} height={11} src='./images/remove.png'  alt='removeBtn' />
                             </button>
                         </div>
@@ -43,12 +36,12 @@ return (
                         <li>
                             <span>Итого:</span>
                             <div></div>
-                            <b>{totalPrice + totalTax } руб. </b>
+                            <b> ... руб. </b>
                         </li>
                         <li>
                             <span>Налог 5%:</span>
                             <div></div>
-                            <b>{totalTax} руб. </b>
+                            <b>... руб. </b>
                         </li>
                         <button className='buttonCheck'>Оформить заказ</button>
                         <img src='./images/btn.png'  alt='btn'/>

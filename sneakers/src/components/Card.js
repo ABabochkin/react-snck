@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Card({title, price, Image, onPlus, onPlusFavorite, favorited = false}) {
+export default function Card({title, price, Image, onPlus, onPlusFavorite, favorited = false}, removeFavorites) {
 
     const [isAdded, setIsAdded] = useState(false);
     const [isFavorite, setIsFavorite] = useState(favorited);
@@ -11,9 +11,8 @@ export default function Card({title, price, Image, onPlus, onPlusFavorite, favor
     }
 
     const onClickFavorite = () => {
-        onPlusFavorite({title,price,Image})
+        onPlusFavorite({title, price, Image})
         setIsFavorite(!isFavorite)
-
     }
 
 
@@ -23,8 +22,8 @@ export default function Card({title, price, Image, onPlus, onPlusFavorite, favor
             className='favorite' 
             src={isFavorite ? './images/favorite.png' : './images/noFavorite.png'} 
             alt='like' 
-            onClick={onClickFavorite} />
-            
+            onClick={onClickFavorite}
+            />
         <img width={133} header={112} src={Image}  alt='sneakers' />
         <h5> {title} </h5>
         <div className='card-bottom'>
