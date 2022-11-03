@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 
 import Header from './components/Header'
 //import Card from './components/Card'
-import Drawer from './components/Drawer'
+import Drawer from './components/drawer/Drawer'
 import  {useState}  from 'react';
 
 import Home from './pages/Home';

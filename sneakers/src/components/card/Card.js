@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+
+import '../card/card.scss'
 
 export default function Card({title, price, Image, onPlus, onPlusFavorite, favorited = false}, removeFavorites) {
 

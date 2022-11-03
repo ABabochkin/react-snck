@@ -1,5 +1,7 @@
 import React from 'react'
 
+import '../drawer/drawer.scss'
+
 
 export default function Drawer({onClose, items= [], onRemoveItem }) {
 
