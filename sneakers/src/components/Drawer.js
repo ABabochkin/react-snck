@@ -29,7 +29,7 @@ return (
                             <img style={{marginRight: '20px'}} width={70} height={70} src={obj.Image} alt='snk'/>
                             <div style={{marginRight: '20px'}} >
                                 <p>{obj.title}</p>
-                                <b>{obj.price}</b>
+                                <b>{obj.price} руб.</b>
                             </div>
                             <button className='removeBtn' onClick={() => {onRemove(obj.id)} } > 
                                 <img width={11} height={11} src='./images/remove.png'  alt='removeBtn' />

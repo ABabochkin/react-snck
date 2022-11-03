@@ -34,15 +34,16 @@ function Home ({
         
             {items
                 .filter((item) => item.name.toLowerCase().includes(searchValue))
-                .map((item) => (
+                .map((item, index) => (
                     <Card
-                        key={item.Image}
+                        key={index}
                         title = {item.name}
                         price = {item.price}
                         Image = {item.Image}
                         onPlus = {(obj) => addToCard(obj)}
                         onPlusFavorite = {(obj) => addToFavorite(obj)}
                         // added = {cartItems.some((obj) => Number(obj.id) === Number(item.id))}
+                        {...item}
                     />
                 ) )}  
             </div>

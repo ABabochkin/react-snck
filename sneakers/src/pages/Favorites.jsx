@@ -13,12 +13,9 @@ function Favorites ({items, addToFavorite}) {
                 {items.map((item, index) => (
                         <Card
                             key={index}
-                            title = {item.title}
-                            price = {item.price}
-                            Image = {item.Image}
                             favorited = {true}
                             onPlusFavorite = {addToFavorite} 
-
+                            {...item}
                         />
                     ))}  
             </div>
