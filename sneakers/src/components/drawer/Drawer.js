@@ -1,20 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import '../drawer/drawer.scss'
 
-
 export default function Drawer({onClose, items= [], onRemoveItem }) {
+
+const [zakaz, setZakaz] = useState(false)
+
+const zakazDone = () => {
+    setZakaz(!zakaz)
+}
+
 
 
 return (
 <div className='overlay'>
+
+    {zakaz ? 
+        <div className='drawer'>
+                <h2 style={{ padding:'10pxs' ,fontFamily: 'Inter'}} >Корзина</h2>
+                <div className='zakazDone'>
+                    <img width={100} height={130} src='./images/zakaz.png' alt='zakaz'/>
+                    <h3>Заказ оформлен!</h3>
+                    <p>Ваш заказ скоро будет передан курьерской доставке</p>
+                    
+                    <button className='zakazButton' onClick={onClose} >  
+                        <img height={13} width={13} src='./images/buttonRotate.png' alt='btnRotate'/>  Вернуться назад 
+                    </button>
+
+                </div>
+
+
+        </div>  :  
+
     <div className='drawer'>
+
+    
+    
         <div className='cartClose'>
             <h2>Корзина</h2>
             <button className='btnClose' onClick={onClose} >
                 <img src='./images/remove.png' alt='close' />
             </button>
         </div>
+    
+
 
         {items.length ? (
             <div className='scrollItemsBlock' >
@@ -32,6 +61,7 @@ return (
                         </div>
                 ))}
                 </div>
+        
 
                 <div className='cardTotalBlock'>
                     <ul>
@@ -45,7 +75,7 @@ return (
                             <div></div>
                             <b>... руб. </b>
                         </li>
-                        <button className='buttonCheck'>Оформить заказ</button>
+                        <button className='buttonCheck' onClick={zakazDone} >Оформить заказ</button>
                         <img src='./images/btn.png'  alt='btn'/>
                     </ul>
                 </div>  
@@ -63,8 +93,11 @@ return (
                 </button>
             </div>  
         )}
-        
+    
+    
     </div>
+    }
+    
 </div>
 )
 }

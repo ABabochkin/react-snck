@@ -22,7 +22,6 @@
     box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
     padding: 30px;
 
-    animation: drv;
 
 
 
@@ -183,5 +182,59 @@
         &:hover {
             opacity: 0.5;
         }
+    }
+}
+
+
+
+.zakazDone {
+
+    margin-top: 150px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    h3 {
+        color: rgba(135, 194, 10, 1);
+        font-family: 'Inter';
+
+    }
+
+    p {
+        width: 280px;
+        line-height: 20px;
+        opacity: 0.3;
+        font-family: 'Inter';
+    }
+
+    .zakazButton {
+        width: 245px;
+        height: 55px;
+        background: #9DD558;
+        border-radius: 18px;
+        border: none;
+        color: white;
+        font-family: 'Inter';
+        font-weight: 600;
+        font-style: normal;
+        text-align: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 19px;
+
+        &:hover {
+            img {
+                transform: translateX(-5px);
+            }
+        }
+
+        img {
+            position: relative;
+            right: 20px;
+            transition: transform 0.15s ease-in-out;
+        }
+
     }
 }
