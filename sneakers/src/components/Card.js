@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
-export default function Card({id, title, price, Image, onPlus, onPlusFavorite, favorited = false}) {
+export default function Card({id, title, price, Image, onPlus, onPlusFavorite, favorited = false, added = false }) {
 
-    const [isAdded, setIsAdded] = useState(false);
+    const [isAdded, setIsAdded] = useState(added);
     const [isFavorite, setIsFavorite] = useState(favorited);
 
     const onClickPlus = () => {
-        onPlus({title, price, Image})
+        onPlus({id, title, price, Image})
         setIsAdded(!isAdded)
     }
 

@@ -24,8 +24,8 @@ return (
         {items.length ? (
             <div className='scrollItemsBlock' >
                 <div className='items'>
-                    {items.map((obj, id) => (
-                        <div className='cardItem'  >
+                    {items.map((obj) => (
+                        <div key={obj.id} className='cardItem'  >
                             <img style={{marginRight: '20px'}} width={70} height={70} src={obj.Image} alt='snk'/>
                             <div style={{marginRight: '20px'}} >
                                 <p>{obj.title}</p>

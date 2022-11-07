@@ -31,34 +31,38 @@ function App( ) {
   const [cartOpened, setCartOpened] = useState(false);
 
   useEffect(() => {
-        axios.get('https://63544c7ae64783fa8282d85a.mockapi.io/items')
-          .then((res) => {
-            setItems(res.data)
-          });
+      async function fetchData () {
+        const cartResponse = await  axios.get('https://63544c7ae64783fa8282d85a.mockapi.io/cart')
+        const favoriteResponse = await axios.get('https://63544c7ae64783fa8282d85a.mockapi.io/favorites')
+        const itemsResponse = await axios.get('https://63544c7ae64783fa8282d85a.mockapi.io/items')
 
-        axios.get('https://63544c7ae64783fa8282d85a.mockapi.io/cart')
-          .then((res) => {
-            setCartItems(res.data)
-          });  
+        
+        setCartItems(cartResponse.data)
+        setFavoriteItems(favoriteResponse.data)
+        setItems(itemsResponse.data)
+      }
 
-          axios.get('https://63544c7ae64783fa8282d85a.mockapi.io/favorites')
-          .then((res) => {
-            setFavoriteItems(res.data)
-          });  
-
+      fetchData()
   }, []);
 
   
+  
 
   const addToCard = (obj) => {
-    axios.post('https://63544c7ae64783fa8282d85a.mockapi.io/cart', obj)
-    .then(res => setCartItems(prev => [...prev, res.data]))  
+    console.log(obj)
+    if (cartItems.find((item) => Number(item.id) === Number(obj.id))) {
+      axios.delete(`https://63544c7ae64783fa8282d85a.mockapi.io/cart/${obj.id}`);
+      setCartItems((prev) => prev.filter((item) => Number(item.id) !== Number(obj.id)))
+    } else {
+      axios.post('https://63544c7ae64783fa8282d85a.mockapi.io/cart', obj)
+      setCartItems(prev => [...prev, obj])
+    }
+
   }
 
   
 
   const addToFavorite = async (obj) => {
-
     try {
       if (favoriteItems.find(favObj => favObj.id === obj.id)) {
         axios.delete(`https://63544c7ae64783fa8282d85a.mockapi.io/favorites/${obj.id}`)
@@ -95,6 +99,7 @@ function App( ) {
         <Route exact path='/' element = { 
           <Home 
             items = {items} 
+            cartItems={cartItems}
             searchValue={searchValue} 
             onChangeSearchValue={onChangeSearchValue}
             setSearchValue={setSearchValue} 
