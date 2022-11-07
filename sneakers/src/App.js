@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import Home from './pages/Home';
 import Favorites from './pages/Favorites';
 
-function App( ) {
+function App() {
 
   /* const arr = [
     {name: 'Мужские Кроссовки Nike Blazer Mid Suede', price: '12 999 руб.', Image: './images/1.jpg'},
@@ -29,13 +29,16 @@ function App( ) {
   const [favoriteItems, setFavoriteItems] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [cartOpened, setCartOpened] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
       async function fetchData () {
+
         const cartResponse = await  axios.get('https://63544c7ae64783fa8282d85a.mockapi.io/cart')
         const favoriteResponse = await axios.get('https://63544c7ae64783fa8282d85a.mockapi.io/favorites')
         const itemsResponse = await axios.get('https://63544c7ae64783fa8282d85a.mockapi.io/items')
 
+        setIsLoading(false)
         
         setCartItems(cartResponse.data)
         setFavoriteItems(favoriteResponse.data)
@@ -105,6 +108,7 @@ function App( ) {
             setSearchValue={setSearchValue} 
             addToFavorite={addToFavorite}
             addToCard={addToCard}
+            isLoading={isLoading}
           />}
         />
         <Route path='/favorites' element = { 
