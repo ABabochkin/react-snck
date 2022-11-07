@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ContentLoader from "react-content-loader"
+
+import AppContext from '../AppContext';
 
 export default function Card({
     id, 
@@ -9,16 +11,20 @@ export default function Card({
     onPlus, 
     onPlusFavorite, 
     favorited = false, 
-    added = false,
     loading
     }) {
 
-    const [isAdded, setIsAdded] = useState(added);
+
+
+    //const [isAdded, setIsAdded] = useState(added);
+    const {isItemAdded} = useContext(AppContext);
     const [isFavorite, setIsFavorite] = useState(favorited);
+
+    console.log(title, isItemAdded(id))
 
     const onClickPlus = () => {
         onPlus({id, title, price, Image})
-        setIsAdded(!isAdded)
+     //   setIsAdded(!isAdded)
     }
 
     const onClickFavorite = () => {
@@ -68,7 +74,7 @@ export default function Card({
         
             <img
                 width={32} height={32}
-                src={isAdded ? './images/btn-checked.svg' : './images/plus.png' }
+                src={isItemAdded(id) ? './images/btn-checked.svg' : './images/plus.png' }
                 alt='plus'
                 style={{cursor: 'pointer'}}
                 onClick={onClickPlus}

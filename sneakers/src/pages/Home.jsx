@@ -10,7 +10,7 @@ function Home ({
     onChangeSearchValue,
     addToFavorite,
     addToCard,
-    isLoading
+    isLoading,
 }) 
 
     {
@@ -18,10 +18,10 @@ function Home ({
             const filtredItems = items.filter((item) =>
             item.title.toLowerCase().includes(searchValue.toLowerCase()),
             );
-            return (isLoading ? [...Array(8)] : filtredItems).map((item, index) => (
+            return (isLoading ? [...Array(12)] : filtredItems).map((item, index) => (
             <Card
                 key={index}
-                onFavorite={(obj) => addToFavorite(obj)}
+                onPlusFavorite={(obj) => addToFavorite(obj)}
                 onPlus={(obj) => addToCard(obj)}
                 loading={isLoading}
                 {...item}
@@ -46,7 +46,6 @@ function Home ({
                     onClick={() => setSearchValue('') } 
                 />
                 : null  }
-
                 </div>
             </div>
             <div style={{display: 'flex', flexWrap: 'wrap', marginLeft: '30px'}}>
